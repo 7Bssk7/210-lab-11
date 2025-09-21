@@ -9,14 +9,19 @@ const int NUM_CARS = 3;
 struct Car{
     string make, model;
     int year, miles;
+    string *pOwners;
+
+   
 };
 
 void inputCars(Car *);
+void outputEx();
 void outputCars(Car *);
 
 int main(){
     Car *list = new Car[NUM_CARS];
     
+    outputEx();
     for(int i = 0; i < NUM_CARS; ++i){
         inputCars(&list[i]);
     }
@@ -24,7 +29,6 @@ int main(){
     for(int i = 0; i < NUM_CARS; ++i){
         outputCars(&list[i]);
     }
-
 
     return 0;
 }
@@ -45,6 +49,19 @@ void inputCars(Car *c){
     num++;
 }
 
+void outputEx(){
+    cout << "Output example:" << endl;
+    cout<< "Car #" << 1 << endl;
+    cout << "Enter the vehicle manufacturer: " << "BMW" << endl;
+    cout << "Enter the vehicle model: " << "328i" << endl;
+    cout << "Enter the year of manufacture: " << "2014" << endl;
+    cout << "Enter a car mileage: " << "120412" << endl;
+    cout << "Enter the number of previous owners: " << "2" << endl;
+    cout << "Previous owners: "<< endl;
+    cout << "#1 2014 - 2019" << endl;
+    cout << "#2 2019 - current" << endl;  
+    cout << endl;
+}
 void outputCars(Car *c){
     static int num = 0;
     cout<< "Car #" << num+1 << endl;
