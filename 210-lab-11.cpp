@@ -7,7 +7,7 @@ using namespace std;
 const int NUM_CARS = 3;
 
 //Car struct definition
-//Contains manufacturer, model, year of manufactur, mileage, number of previous owners
+//Contains manufacturer, model, year of manufacture, mileage, number of previous owners
 //+ contains dynamic array to store time intervals of ownership
 struct Car{
     string make, model;
@@ -24,6 +24,7 @@ struct Car{
    
 };
 
+//Function prototypes
 void inputCars(Car *);
 void inputEx();
 void outputCars(Car *);
@@ -108,7 +109,7 @@ void outputCars(Car *c){
     cout << "Year of manufacture: " << c-> year << endl;
     cout << "Car's mileage: " << c->miles << " miles" << endl;
     cout << "Previous owners: "<< endl;
-    //This code outputs informations about previous ownership on the car
+    //This code outputs information about previous ownership on the car
     for(int i = 0; i < c->pOwners; ++i){
         cout << "Owner #" << i+1 << " " << c->owners[i] << endl;
     }
