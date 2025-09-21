@@ -109,7 +109,7 @@ void outputCars(Car *c){
     cout << "Year of manufacture: " << c-> year << endl;
     cout << "Car's mileage: " << c->miles << " miles" << endl;
     cout << "Previous owners: "<< endl;
-    //This code outputs information about previous ownership on the car
+    //This code outputs information about previous ownership of the car
     for(int i = 0; i < c->pOwners; ++i){
         cout << "Owner #" << i+1 << " " << c->owners[i] << endl;
     }
