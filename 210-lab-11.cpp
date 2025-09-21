@@ -6,11 +6,15 @@ using namespace std;
 
 const int NUM_CARS = 3;
 
+//Car struct definition
+//Contains manufacturer, model, year of manufactur, mileage, number of previous owners
+//+ contains dynamic array to store time intervals of ownership
 struct Car{
     string make, model;
     int year, miles, pOwners;
     string *owners;
-
+    
+    // Destructor, releases dynamic memory 
     ~Car(){
         if(owners){
             delete [] owners;
@@ -27,6 +31,7 @@ void outputCars(Car *);
 int main(){
     Car *list = new Car[NUM_CARS];
     
+    //Call for an example function to show the user what their input should look like.
     inputEx();
     for(int i = 0; i < NUM_CARS; ++i){
         inputCars(&list[i]);
@@ -41,6 +46,9 @@ int main(){
     return 0;
 }
 
+//This function reads all information about a car from the user (make,model,previous owner and etc.)
+//Argument: pointer to a Car struct
+//This is a void function(no return)
 void inputCars(Car *c){
     static int num = 1;
     cout << "Enter information about car #" << num << endl;
@@ -54,6 +62,7 @@ void inputCars(Car *c){
     cin >> c->miles;
     cout << "Enter the number of previous owners: ";
     cin >> c->pOwners;
+    //This loop validates number of previous owners entered by the user
     while((c->pOwners < 1) || (c->pOwners > 15)){
         cout << "Invalid input" << endl;
         cout << "Please enter the number of previous owners: ";
@@ -61,6 +70,7 @@ void inputCars(Car *c){
     }
     cin.ignore();
     cout << "Previous owners: "<< endl;
+    //This code allocates memory for the information about previous owners(time intervals)
     c-> owners = new string[c->pOwners];
     for(int i = 0; i < c->pOwners; ++i){
         cout << "Owner #" << i+1 << ": ";
@@ -70,6 +80,9 @@ void inputCars(Car *c){
     num++;
 }
 
+//This function serves as an example of an input function to show user what their input should look like. 
+//No argument(just an example function)
+//This is a void function(no return)
 void inputEx(){
     cout << "Input example:" << endl;
     cout<< "Enter information about car #" << 1 << endl;
@@ -83,6 +96,10 @@ void inputEx(){
     cout << "Owner #2 2019 - current" << endl;  
     cout << endl;
 }
+
+//This function outputs all information about the car entered by the user.
+//Argument: pointer to the Car struct
+//This is a void function(no return)
 void outputCars(Car *c){
     static int num = 0;
     cout<< "Car #" << num+1 << endl;
@@ -91,6 +108,7 @@ void outputCars(Car *c){
     cout << "Year of manufacture: " << c-> year << endl;
     cout << "Car's mileage: " << c->miles << " miles" << endl;
     cout << "Previous owners: "<< endl;
+    //This code outputs informations about previous ownership on the car
     for(int i = 0; i < c->pOwners; ++i){
         cout << "Owner #" << i+1 << " " << c->owners[i] << endl;
     }
