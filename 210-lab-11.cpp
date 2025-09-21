@@ -20,6 +20,7 @@ int main(){
     for(int i = 0; i < NUM_CARS; ++i){
         inputCars(&list[i]);
     }
+    cout << "List of the cars: "  << " \n "<< endl;
     for(int i = 0; i < NUM_CARS; ++i){
         outputCars(&list[i]);
     }
@@ -29,7 +30,7 @@ int main(){
 }
 
 void inputCars(Car *c){
-    static int num = 0;
+    static int num = 1;
     cout << "Enter information about car #" << num << endl;
     cout << "Enter the vehicle manufacturer: ";
     getline(cin, c->make);
@@ -39,18 +40,18 @@ void inputCars(Car *c){
     cin >> c->year;
     cout << "Enter a car mileage: ";
     cin >> c->miles;
-    cout << "\n";
     cin.ignore();
+    cout << endl;
     num++;
 }
 
 void outputCars(Car *c){
-    static int num = 1;
-    cout << "List of the cars" << endl;
+    static int num = 0;
     cout<< "Car #" << num+1 << endl;
     cout << "Make: " << c->make << endl;
     cout << "Model: " << c->model << endl;
     cout << "Year of manufacture: " << c-> year << endl;
     cout << "Cars mileage: " << c->miles << endl;
+    cout << endl;
     num++;
 }
