@@ -21,13 +21,13 @@ struct Car{
 };
 
 void inputCars(Car *);
-void outputEx();
+void inputEx();
 void outputCars(Car *);
 
 int main(){
     Car *list = new Car[NUM_CARS];
     
-    outputEx();
+    inputEx();
     for(int i = 0; i < NUM_CARS; ++i){
         inputCars(&list[i]);
     }
@@ -52,18 +52,19 @@ void inputCars(Car *c){
     cin >> c->miles;
     cout << "Enter the number of previous owners: ";
     cin >> c->pOwners;
+    cin.ignore();
     cout << "Previous owners: "<< endl;
+    c-> owners = new string[c->pOwners];
     for(int i = 0; i < c->pOwners; ++i){
         cout << "Owner #" << i+1 << ": ";
-        cin >> c->owners[i];
+        getline(cin, c->owners[i]);
     }
-    cin.ignore();
     cout << endl;
     num++;
 }
 
-void outputEx(){
-    cout << "Output example:" << endl;
+void inputEx(){
+    cout << "Input example:" << endl;
     cout<< "Car #" << 1 << endl;
     cout << "Enter the vehicle manufacturer: " << "BMW" << endl;
     cout << "Enter the vehicle model: " << "328i" << endl;
