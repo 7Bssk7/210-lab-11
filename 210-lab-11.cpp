@@ -8,9 +8,15 @@ const int NUM_CARS = 3;
 
 struct Car{
     string make, model;
-    int year, miles;
-    string *pOwners;
+    int year, miles, pOwners;
+    string *owners;
 
+    ~Car(){
+        if(owners){
+            delete [] owners;
+        }
+        owners = nullptr;
+    }
    
 };
 
@@ -44,6 +50,13 @@ void inputCars(Car *c){
     cin >> c->year;
     cout << "Enter a car mileage: ";
     cin >> c->miles;
+    cout << "Enter the number of previous owners: ";
+    cin >> c->pOwners;
+    cout << "Previous owners: "<< endl;
+    for(int i = 0; i < c->pOwners; ++i){
+        cout << "Owner #" << i+1 << ": ";
+        cin >> c->owners[i];
+    }
     cin.ignore();
     cout << endl;
     num++;
@@ -58,8 +71,8 @@ void outputEx(){
     cout << "Enter a car mileage: " << "120412" << endl;
     cout << "Enter the number of previous owners: " << "2" << endl;
     cout << "Previous owners: "<< endl;
-    cout << "#1 2014 - 2019" << endl;
-    cout << "#2 2019 - current" << endl;  
+    cout << "Owner #1 2014 - 2019" << endl;
+    cout << "Owner #2 2019 - current" << endl;  
     cout << endl;
 }
 void outputCars(Car *c){
