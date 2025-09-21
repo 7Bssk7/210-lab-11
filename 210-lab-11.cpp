@@ -36,6 +36,8 @@ int main(){
         outputCars(&list[i]);
     }
 
+    delete [] list;
+
     return 0;
 }
 
@@ -84,11 +86,11 @@ void outputCars(Car *c){
     cout << "Make: " << c->make << endl;
     cout << "Model: " << c->model << endl;
     cout << "Year of manufacture: " << c-> year << endl;
-    cout << "Cars mileage: " << c->miles << "miles" << endl;
+    cout << "Cars mileage: " << c->miles << " miles" << endl;
     cout << "Previous owners: "<< endl;
     if(c->pOwners > 0){
         for(int i = 0; i < c->pOwners; ++i){
-            cout << "Owner #" << i+1 << c->owners[i] << endl;
+            cout << "Owner #" << i+1 << " " << c->owners[i] << endl;
         }
     }
     cout << endl;
