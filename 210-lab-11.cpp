@@ -55,13 +55,16 @@ void inputCars(Car *c){
     cout << "Enter the number of previous owners: ";
     cin >> c->pOwners;
     cin.ignore();
-    if(c->pOwners > 0){
+    if((c->pOwners > 0) && (c->pOwners < 15)){
         cout << "Previous owners: "<< endl;
         c-> owners = new string[c->pOwners];
         for(int i = 0; i < c->pOwners; ++i){
             cout << "Owner #" << i+1 << ": ";
             getline(cin, c->owners[i]);
         }
+    }
+    else{
+        cout << "Invalid input" << endl;
     }
     cout << endl;
     num++;
@@ -86,9 +89,9 @@ void outputCars(Car *c){
     cout << "Make: " << c->make << endl;
     cout << "Model: " << c->model << endl;
     cout << "Year of manufacture: " << c-> year << endl;
-    cout << "Cars mileage: " << c->miles << " miles" << endl;
-    cout << "Previous owners: "<< endl;
-    if(c->pOwners > 0){
+    cout << "Car's mileage: " << c->miles << " miles" << endl;
+    if((c->pOwners > 0) && (c->pOwners < 15)){
+        cout << "Previous owners: "<< endl;
         for(int i = 0; i < c->pOwners; ++i){
             cout << "Owner #" << i+1 << " " << c->owners[i] << endl;
         }
